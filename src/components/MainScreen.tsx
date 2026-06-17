@@ -179,6 +179,7 @@ export default function MainScreen({
     };
     
     setDraggingIndex(index);
+    window.dispatchEvent(new CustomEvent('ascii-eyes-control', { detail: { action: 'track-element', targetId: `wrap-${index}` } }));
 
     const handleGlobalPointerMove = (moveEvent: PointerEvent) => {
       const data = dragStart.current[index];
@@ -221,6 +222,7 @@ export default function MainScreen({
       window.removeEventListener('pointerup', handleGlobalPointerUp);
       
       setDraggingIndex(null);
+      window.dispatchEvent(new CustomEvent('ascii-eyes-control', { detail: { action: 'reset' } }));
 
       const data = dragStart.current[index];
       if (data) {
@@ -366,22 +368,26 @@ export default function MainScreen({
         setTelemetryMessage("RANDOMIZATION COMPLETE // EMITTING CONDUITS...");
         setCardTransforms(targetOffsets);
 
-        // Throw cards one-by-one with high tension
+        // Throw cards one-by-one with high tension and have background eyes track them
         setDealtCount(0);
+        window.dispatchEvent(new CustomEvent('ascii-eyes-control', { detail: { action: 'track-element', targetId: 'wrap-0', duration: 300 } }));
         
         setTimeout(() => {
           setDealtCount(1);
           setTelemetryMessage("LEFT CONDUIT EMITTED // ANTECEDENT PHASE");
+          window.dispatchEvent(new CustomEvent('ascii-eyes-control', { detail: { action: 'track-element', targetId: 'wrap-1', duration: 700 } }));
         }, 300);
 
         setTimeout(() => {
           setDealtCount(2);
           setTelemetryMessage("CENTER CONDUIT EMITTED // CONCURRENT PHASE");
+          window.dispatchEvent(new CustomEvent('ascii-eyes-control', { detail: { action: 'track-element', targetId: 'wrap-2', duration: 700 } }));
         }, 1000);
 
         setTimeout(() => {
           setDealtCount(3);
           setTelemetryMessage("RIGHT CONDUIT EMITTED // CONSEQUENT PHASE");
+          window.dispatchEvent(new CustomEvent('ascii-eyes-control', { detail: { action: 'reset' } }));
         }, 1700);
 
         setTimeout(() => {
@@ -413,6 +419,10 @@ export default function MainScreen({
     setIsPurging(true);
     setTelemetryMessage(`✦✦ WARNING: CORRUPT ANOMALY DETECTED AT PORTAL ${idx + 1} // INITIATING EXORCISM SEQUENCE ✦✦`);
     
+    // Make background ASCII eyes go crazy and target the anomaly card
+    window.dispatchEvent(new CustomEvent('ascii-eyes-control', { detail: { action: 'track-element', targetId: `wrap-${idx}`, duration: 4200 } }));
+    window.dispatchEvent(new CustomEvent('ascii-eyes-control', { detail: { action: 'crazy', duration: 4200 } }));
+
     // 1. Wait for standard visual flip to complete and show the anomaly face
     await msDelay(1500);
     

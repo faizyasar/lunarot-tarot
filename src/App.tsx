@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { NatalUser, Planet } from './types';
 import StarBackground from './components/StarBackground';
+import AsciiBackgroundEyes from './components/AsciiBackgroundEyes';
 import IntroScreen from './components/IntroScreen';
 import IntakeScreen from './components/IntakeScreen';
 import MainScreen from './components/MainScreen';
@@ -34,6 +35,9 @@ export default function App() {
       
       {/* Dynamic star twinkling and constellation background lines */}
       <StarBackground planets={planets} activePlanets={activePlanets} />
+
+      {/* Barely visible blurred pair of ASCII eyes tracking mouse & blinking */}
+      <AsciiBackgroundEyes />
 
       {/* Frame boundary wrapper */}
       <div className="relative z-10 w-full h-full max-h-full flex flex-col items-center justify-center overflow-hidden">

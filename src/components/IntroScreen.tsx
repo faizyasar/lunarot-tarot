@@ -201,7 +201,7 @@ export default function IntroScreen({ onDismiss }: IntroScreenProps) {
       {/* Decorative corporate boundary footers */}
       <footer className="relative z-10 w-full py-4 px-8 border-t border-white/5 flex justify-between items-center text-[6px] md:text-[7px] tracking-[0.2em] text-white/30 font-mono shrink-0 uppercase select-none">
         <span>SECURITY ALIGNMENT: FORBIDDEN</span>
-        <span>© ANCOKUKOUBOU Divination Systems, 2004</span>
+        <span>ASTRAL CHRONOLOGY ARCHIVE // EST. MMIV</span>
         <span>LUNAROT ENGINE OS // ROOT SECURITY ACTIVE</span>
       </footer>
     </div>
