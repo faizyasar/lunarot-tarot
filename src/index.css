@@ -8,31 +8,51 @@
 
 :root {
   --void: #000000;
-  --parchment: #e0deda;
-  --gold: #ffffff;
-  --gold-dim: #7f7f7f;
+  --parchment: #efede8; /* Warm white */
+  --gold: #c8a45a;       /* Elegantly warm gold */
+  --gold-dim: #998358;   /* Slightly darker gold */
   --ash: #080808;
   --cream: #ffffff;
-  --ember: #ffffff;
-  --c-scale: 1;
+  --ember: #c8a45a;      /* Elden Ring embers shine gold */
+  --c-scale: 0.95;
 }
 
+/* Width Adaptations */
 @media (max-width: 1023px) {
   :root { --c-scale: 0.72; }
 }
 @media (max-width: 480px) {
-  :root { --c-scale: 0.62; }
+  :root { --c-scale: 0.58; }
+}
+
+/* Height Adaptations to fit perfectly inside Carrd / custom frames without double scrolls */
+@media (max-height: 850px) {
+  :root { --c-scale: 0.82; }
+}
+@media (max-height: 750px) {
+  :root { --c-scale: 0.70; }
+}
+@media (max-height: 650px) {
+  :root { --c-scale: 0.60; }
+}
+@media (max-height: 570px) {
+  :root { --c-scale: 0.50; }
 }
 
 /* ── OVERALL SYSTEM ── */
-body {
+html, body, #root {
+  height: 100vh;
+  min-height: 100vh;
+  max-height: 100vh;
+  overflow: hidden !important;
   margin: 0;
   padding: 0;
+}
+
+body {
   background-color: var(--void);
   color: var(--parchment);
   font-family: 'Cormorant Garamond', serif;
-  overflow-x: hidden;
-  min-height: 100vh;
 }
 
 /* Background Atmosphere - Dark ritual vignette */
@@ -140,24 +160,26 @@ body::before {
   -webkit-backface-visibility: hidden;
 }
 .card-back {
-  background: linear-gradient(160deg, #090909, #000000);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  background: rgba(4, 4, 4, 0.18);
+  backdrop-filter: blur(2px);
+  border: 1px solid rgba(200, 164, 90, 0.45); /* Elden gold rim */
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
+  box-shadow: 0 0 15px rgba(200, 164, 90, 0.08);
 }
 .card-back svg {
   position: absolute;
-  width: 88%;
-  height: 88%;
-  opacity: .25;
+  width: 90%;
+  height: 90%;
+  opacity: .5;
 }
 .card-back::before {
   content: '';
   position: absolute;
-  inset: 7px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  inset: 6px;
+  border: 1px solid rgba(215, 205, 190, 0.15); /* White/bone accent */
   border-radius: 5px;
 }
 .tap-hint {
@@ -166,27 +188,29 @@ body::before {
   font-family: monospace;
   font-size: calc(7.5px * var(--c-scale));
   letter-spacing: .35em;
-  color: rgba(255, 255, 255, 0.45);
+  color: #c8a45a; /* Elden gold */
   text-transform: uppercase;
   animation: breathe 2.8s ease-in-out infinite;
 }
 
 .card-front {
-  background: linear-gradient(170deg, #0a0a0a, #000000);
-  border: 1px solid rgba(255, 255, 255, 0.45);
+  background: rgba(6, 6, 6, 0.45);
+  backdrop-filter: blur(3px);
+  border: 1px solid rgba(215, 205, 190, 0.55); /* White/bone rim */
   transform: rotateY(-180deg); /* Standard Y axis card flipping */
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
   padding: calc(15px * var(--c-scale)) calc(11px * var(--c-scale));
-  color: #cfc9c0;
+  color: #efede8;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.05);
 }
 .card-front::before {
   content: '';
   position: absolute;
   inset: 5px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(200, 164, 90, 0.25); /* Elden gold accent */
   border-radius: 5px;
   pointer-events: none;
 }

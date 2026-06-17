@@ -30,13 +30,13 @@ export default function App() {
   };
 
   return (
-    <main className="relative w-screen min-h-screen text-[var(--parchment)] max-w-full overflow-x-hidden flex flex-col justify-between select-none">
+    <main className="relative w-screen h-screen max-h-screen text-[var(--parchment)] max-w-full overflow-hidden flex flex-col justify-between select-none bg-black">
       
       {/* Dynamic star twinkling and constellation background lines */}
       <StarBackground planets={planets} activePlanets={activePlanets} />
 
       {/* Frame boundary wrapper */}
-      <div className="relative z-10 w-full min-h-screen flex flex-col items-center justify-center py-6">
+      <div className="relative z-10 w-full h-full max-h-full flex flex-col items-center justify-center overflow-hidden">
         
         {/* State 1: Gothic intro gate */}
         {screen === 'intro' && (

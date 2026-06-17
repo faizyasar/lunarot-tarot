@@ -108,10 +108,16 @@ interface MainScreenProps {
 const POSITIONS = ["I: ANTECEDENT", "II: CONCURRENT", "III: CONSEQUENT"];
 
 const SVG_BACK = (
-  <svg className="w-full h-full p-2 opacity-25" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="100" cy="100" r="80" fill="none" stroke="#ffffff" strokeWidth="0.8" />
-    <circle cx="100" cy="100" r="40" fill="none" stroke="#ffffff" strokeWidth="1.2" />
-    <polygon points="100,30 170,150 30,150" fill="none" stroke="#ffffff" strokeWidth="0.5" />
+  <svg className="w-full h-full p-2 opacity-50" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="100" cy="100" r="85" fill="none" stroke="#c8a45a" strokeWidth="0.6" strokeDasharray="3 3" />
+    <circle cx="100" cy="100" r="75" fill="none" stroke="#ffffff" strokeWidth="0.4" />
+    <circle cx="100" cy="100" r="50" fill="none" stroke="#c8a45a" strokeWidth="0.8" />
+    <circle cx="100" cy="100" r="30" fill="none" stroke="#ffffff" strokeWidth="0.5" />
+    <circle cx="100" cy="100" r="15" fill="none" stroke="#c8a45a" strokeWidth="1" />
+    <line x1="100" y1="10" x2="100" y2="190" stroke="#c8a45a" strokeWidth="0.4" strokeDasharray="2 4" />
+    <line x1="10" y1="100" x2="190" y2="100" stroke="#c8a45a" strokeWidth="0.4" strokeDasharray="2 4" />
+    <polygon points="100,15 173,142 27,142" fill="none" stroke="#ffffff" strokeWidth="0.3" opacity="0.6" />
+    <polygon points="100,185 173,58 27,58" fill="none" stroke="#ffffff" strokeWidth="0.3" opacity="0.3" />
   </svg>
 );
 
@@ -204,7 +210,7 @@ export default function MainScreen({
         updated[index] = {
           x: data.ox + dx,
           y: data.oy + dy,
-          rot: data.rot + (dx * 0.12),
+          rot: 0,
         };
         return updated;
       });
@@ -348,9 +354,9 @@ export default function MainScreen({
       
       // Calculate final custom offsets for dealing throw:
       const targetOffsets = [
-        { x: (Math.random() * 24 - 12), y: (Math.random() * 20 - 10), rot: (Math.random() * 16 - 8) },
-        { x: (Math.random() * 24 - 12), y: (Math.random() * 20 - 10), rot: (Math.random() * 16 - 8) },
-        { x: (Math.random() * 24 - 12), y: (Math.random() * 20 - 10), rot: (Math.random() * 16 - 8) },
+        { x: (Math.random() * 24 - 12), y: (Math.random() * 20 - 10), rot: 0 },
+        { x: (Math.random() * 24 - 12), y: (Math.random() * 20 - 10), rot: 0 },
+        { x: (Math.random() * 24 - 12), y: (Math.random() * 20 - 10), rot: 0 },
       ];
 
       // 3. Move to dealing after another 1800ms
