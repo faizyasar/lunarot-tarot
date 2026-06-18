@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Analytics } from '@vercel/analytics/react';
 import { NatalUser, Planet } from './types';
 import StarBackground from './components/StarBackground';
 import AsciiBackgroundEyes from './components/AsciiBackgroundEyes';
@@ -64,6 +65,7 @@ export default function App() {
         
       </div>
       
+      <Analytics />
     </main>
   );
 }
